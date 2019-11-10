@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial;
+}
+
+.grid {
+    display: grid;
+    min-height: 100vh;
+    max-width: 1240px;
+    margin: 0 auto;
+    grid:
+        "logotype search hamburger" auto
+        "gallery gallery gallery" 1fr
+        "contact contact contact" auto
+        "footer footer footer" auto
+        / minmax(120px, 200px) minmax(240px, 1fr) 80px;
+
+    @media (min-width: 1024px) {
+        grid:
+            "logotype gallery" auto
+            "menu gallery" auto
+            "search gallery" auto
+            ". images" 1fr
+            "contact gallery" auto
+            "footer footer" auto
+            / minmax(300px, auto) 1fr;
+    }
+}
+
+.logo {
+    grid-area: logotype;
+    background-color: #ff0000;
+    height: 100px;
+}
+
+.search {
+    grid-area: search;
+    background-color: #00ff00;
+}
+
+.menu {
+    grid-area: hamburger;
+    background-color: #0000ff;
+    @media (min-width: 1024px) {
+        grid-area: menu;
+        min-height: 80px;
+    }
+}
+
+.gallery {
+    grid-area: gallery;
+    background-color: #223344;
+    display: grid;
+    // dzięki temu mamy ładnie responsywne :)
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 80px 15px 15px;
+    position: relative;
+    h1 {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        background-color: rgba(0,0,0,.2);
+    }
+    img {
+        width: 100%;
+    }
+}
+
+.contact {
+    grid-area: contact;
+    background-color: #674323;
+    height: 100px;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #097612;
+    height: 120px;
+}
